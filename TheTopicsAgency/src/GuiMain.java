@@ -1,12 +1,15 @@
 import java.awt.*;
+
 import javax.swing.*;
+
 import java.awt.event.*;
 import java.util.*;
 
-public class GuiMain extends JFrame
+public class GuiMain extends JFrame implements ActionListener
 {
 	private JTabbedPane tabbedPane = new JTabbedPane();
 	private Font font = new Font("Lucida Bright", Font.BOLD, 15);
+	private JButton bookingOversigt;
 	   
 	public GuiMain()
 	{
@@ -26,9 +29,8 @@ public class GuiMain extends JFrame
 	      
 	    startTab();
 	    bookingTab();
-	    //
-	    //
-	      
+	    lønTab();
+	    
 	    setVisible(true);
 	 }
 	   
@@ -47,8 +49,27 @@ public class GuiMain extends JFrame
 	    JPanel panelBooking = new JPanel();
 	    tabbedPane.addTab("Booking", panelBooking);
 	    tabbedPane.setFont(font);
-	      
-	    //Calendar calendar = new GregorianCalendar();
-
+	    
+	    //Tilføj knap til booking-tab 
+	    bookingOversigt = new JButton("VIS BOOKINGOVERSIGT");
+	    bookingOversigt.setFont(font);
+	    panelBooking.add(bookingOversigt);
+	    bookingOversigt.addActionListener(this);
 	 }
+	 
+	 public void lønTab()
+	 {
+	    JPanel panelBooking = new JPanel();
+	    tabbedPane.addTab("Lønberegning", panelBooking);
+	    tabbedPane.setFont(font);
+	 }
+
+	public void actionPerformed(ActionEvent event) 
+	{
+		if (event.getSource() == bookingOversigt)
+		{
+			GuiBooking gb = new GuiBooking();
+		}
+		
+	}
 }
