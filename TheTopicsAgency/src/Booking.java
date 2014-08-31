@@ -1,4 +1,4 @@
-public class Foredragsholder 
+public class Booking 
 {
 	private String navn; 
 	private String mobilNummer; 
@@ -8,7 +8,7 @@ public class Foredragsholder
 
 	
 
-	public Foredragsholder(String navn, String mobilNummer, String adresse, String dato, String tid)
+	public Booking(String navn, String mobilNummer, String adresse, String dato, String tid)
 	{
 		this.navn = navn;
 		this.mobilNummer = mobilNummer;

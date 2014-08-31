@@ -1,22 +1,17 @@
 import java.io.*;
-import java.awt.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel; 
 
-public class DataAccessForedragsholder 
+public class DataAccessBooking 
 {
-	public void writeToFile(Foredragsholder fh) throws Exception
+	public void writeToFile(Booking b) throws Exception
 	{
-		FileWriter fw = new FileWriter("medlemmer.txt", true);
+		FileWriter fw = new FileWriter("Booking.txt", true);
 		BufferedWriter bw = new BufferedWriter(fw);
 		PrintWriter pw = new PrintWriter(bw);
 
-		pw.println(fh.getNavn() + ", " + 
-				fh.getMobilNummer() + ", " + 
-				fh.getAdresse() + ", " + 
-				fh.getDato() + ", " + 
-				fh.getTid() + ", " + 
-				pw.close();
+		pw.println(b.getNavn() + ", " + b.getMobilNummer() + ", " + b.getAdresse() + ", " + b.getDato() + ", " + b.getTid()); 
+		pw.close();
 	}
 
 	public void loadTable(String textfile, DefaultTableModel model) throws Exception
@@ -32,10 +27,10 @@ public class DataAccessForedragsholder
 	}
 
 
-	public void sletMedlem(String mobilNr) throws Exception //(Næsten)copy-paste fra: http://stackoverflow.com/questions/23097163/delete-string-from-text-file-fails-on-deployment-in-tomcat
+	public void sletMedlem(String mobilNr) throws Exception 
 	{ 
-		File inputFil = new File("medlemmer.txt");
-		File midlertidigFil = new File("medlemmerTempFil.txt");
+		File inputFil = new File("Booking.txt");
+		File midlertidigFil = new File("BookingFil.txt");
 
 		BufferedReader br = new BufferedReader(new FileReader(inputFil));
 		PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(midlertidigFil)));
@@ -45,7 +40,7 @@ public class DataAccessForedragsholder
 
 		while((line = br.readLine()) != null)
 		{
-			String trimLine = line.trim(); //trim fjerner alle indledende og afsluttende white-space karakterer
+			String trimLine = line.trim(); 
 			if(!trimLine.contains(fjernRow)) 
 			{
 				pw.println(line); 
